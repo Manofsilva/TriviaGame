@@ -41,3 +41,50 @@ var questions = [{
     correctAnswer: "Cigarette butts", 
     image:
 }];
+
+// Setup of the Game Questions through methods
+
+var game = {
+    questions:questions,
+    // keep track of what question we are currently on
+    currentQuestion:0,
+    counter: 30,
+    correct:0,
+    incorrect:0,
+    // Setting up a countdown method
+    countDown: function(){
+
+    },
+    // Setting up a loadQuestion method
+    loadQuestion: function(){
+
+    },
+    // Setting up a nextQuestion method
+    nextQuestion: function(){
+
+    },
+    // Setting up a timeUp method
+    timeUp: function(){
+
+    },
+    // Setting up a results method
+    results: function(){
+
+    },
+    // Setting up a clicked method
+    clicked: function(){
+
+    }, 
+    // Setting up a answeredCorrectly method
+    answeredCorrectly: function(){
+
+    },
+    // Setting up a answeredIncorrectly method
+    answeredIncorrectly: function(){
+
+    },
+    // Setting up a reset method
+    reset: function(){
+
+    }
+}
