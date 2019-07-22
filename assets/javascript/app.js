@@ -98,7 +98,7 @@ var game = {
     },
     // Setting up a clicked method
     clicked: function(e){
-    //Make Sure That The Timer Isn't Running After Button is Clicked
+    //Make Sure That The Timer Isn't Running After Button Is Clicked
         clearInterval(timer);
         // If The Button Clicked Is Correct, Let User Know Otherwise Let User Know It Was Incorrect
         
@@ -117,6 +117,12 @@ var game = {
         game.correct++;
         // Write To Document If It Was Correct
         $('#subwrapper').html('<h2>YOU GOT IT RIGHT!</h2>');
+        // Add Something That Takes Us To The Next Question or Determines If In The Last Section and Takes Us To The Results Page, Wait 5 Seconds
+        if(game.currentQuestion==questions.length-1){
+            setTimeout(game.results,5*1000);
+        } else {
+            setTimeout(game.nextQuestion, 5*1000);
+        }
     },
     // Setting up a answeredIncorrectly method
     answeredIncorrectly: function(){
@@ -127,6 +133,12 @@ var game = {
         game.incorrect++;
         // Write To Document If It Was Correct
         $('#subwrapper').html('<h2>YOU GOT IT WRONG!</h2>');
+        // Add Something That Takes Us To The Next Question or Determines If In The Last Section and Takes Us To The Results Page, Wait 5 Seconds
+        if(game.currentQuestion==questions.length-1){
+            setTimeout(game.results,5*1000);
+        } else {
+            setTimeout(game.nextQuestion, 5*1000);
+        }
     },
     // Setting up a reset method
     reset: function(){
