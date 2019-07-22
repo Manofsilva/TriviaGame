@@ -58,6 +58,7 @@ var game = {
     counter: 30,
     correct:0,
     incorrect:0,
+    Unanswered: 0,
     // Setting up a countdown method in charge of the timer
     countDown: function(){
         game.countDown--;
@@ -92,6 +93,8 @@ var game = {
     // Setting up a timeUp method
     timeUp: function(){
         clearInterval(timer);
+        // Have Something for the Unanswered Questions
+        game.Unanswered++;
         // Set This So That Subwrapper Tells Us We've Run Out Of Time
         $('#subwrapper').html('<h2>OUT OF TIME!</H2>');
         // What The Correct Answer Would Have Been
@@ -103,8 +106,13 @@ var game = {
             setTimeout(game.nextQuestion, 3*1000);
         }
     },
-    // Setting up a results method
+    // Setting up a Results Method So That It Shows Whenever We Hit The Last Question
     results: function(){
+        clearInterval(timer);
+        $('#subwrapper').html("<h2>ALL DONE!</h2>");
+        $('#subwrapper').append("<h3>Correct: " + game.correct+"</h3>");
+        $('#subwrapper').append("<h3>Incorrect: " + game.incorrect+"</h3>");
+        // Have Something For Answers Left Unanswered
 
     },
     // Setting up a clicked method
