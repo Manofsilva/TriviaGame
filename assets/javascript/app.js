@@ -3,6 +3,12 @@
 $('#start').on('click',function(){
     $('#start').remove();
     game.loadQuestion();
+    
+})
+
+// Onclick Event To Find Out If Answer is Correct or Not
+$('document').on('click', '.answer-button', function(e){
+    game.clicked(e);
 })
 
 // Variables to setup Questions with an Array
