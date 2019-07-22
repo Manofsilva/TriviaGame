@@ -84,13 +84,24 @@ var game = {
     // Setting up a nextQuestion method
     nextQuestion: function(){
         game.counter = 30;
-        $('#counter').html(game.coutner);
+        $('#counter').html(game.counter);
+        // Set Up So That I Don't Loop Over Same Question
         game.currentQuestion++;
         game.loadQuestion();
     },
     // Setting up a timeUp method
     timeUp: function(){
-
+        clearInterval(timer);
+        // Set This So That Subwrapper Tells Us We've Run Out Of Time
+        $('#subwrapper').html('<h2>OUT OF TIME!</H2>');
+        // What The Correct Answer Would Have Been
+        $('#subwrapper').append('<h3>The Correct Answer Was: ' + questions[game.currentQuestion].correctAnswer + '</h3>');
+        // Make Sure If It Was Final Question
+        if(game.currentQuestion==questions.length-1){
+            setTimeout(game.results,3*1000);
+        } else {
+            setTimeout(game.nextQuestion, 3*1000);
+        }
     },
     // Setting up a results method
     results: function(){
@@ -119,9 +130,9 @@ var game = {
         $('#subwrapper').html('<h2>YOU GOT IT RIGHT!</h2>');
         // Add Something That Takes Us To The Next Question or Determines If In The Last Section and Takes Us To The Results Page, Wait 5 Seconds
         if(game.currentQuestion==questions.length-1){
-            setTimeout(game.results,5*1000);
+            setTimeout(game.results,3*1000);
         } else {
-            setTimeout(game.nextQuestion, 5*1000);
+            setTimeout(game.nextQuestion, 3*1000);
         }
     },
     // Setting up a answeredIncorrectly method
@@ -133,11 +144,13 @@ var game = {
         game.incorrect++;
         // Write To Document If It Was Correct
         $('#subwrapper').html('<h2>YOU GOT IT WRONG!</h2>');
+        // What The Correct Answer Would Have Been
+        $('#subwrapper').append('<h3>The Correct Answer Was: ' + questions[game.currentQuestion].correctAnswer + '</h3>');
         // Add Something That Takes Us To The Next Question or Determines If In The Last Section and Takes Us To The Results Page, Wait 5 Seconds
         if(game.currentQuestion==questions.length-1){
-            setTimeout(game.results,5*1000);
+            setTimeout(game.results,3*1000);
         } else {
-            setTimeout(game.nextQuestion, 5*1000);
+            setTimeout(game.nextQuestion, 3*1000);
         }
     },
     // Setting up a reset method
