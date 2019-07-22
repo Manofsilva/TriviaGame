@@ -7,7 +7,7 @@ $('#start').on('click',function(){
 })
 
 // Onclick Event To Find Out If Answer is Correct or Not
-$('document').on('click', '.answer-button', function(e){
+$(document).on('click', '.answer-button', function(e){
     game.clicked(e);
 })
 
@@ -76,15 +76,17 @@ var game = {
     // Post the Question to The Page 
     $('#subwrapper').html('<h2>' + questions[game.currentQuestion].question + '</h2>');
     // The Following Will Make Sure To Post The Answers To The Page Utilizing a For Loop
-    for (let i = 0; i < questions[game.currentQuestion].answers.length; i++) {
+    for (let i = 0; i < questions[game.currentQuestion].answers.length; i++){
     // Making Sure To Add The Buttons Here
-        $('#subwrapper').append('<button class = "answer-button" id ="button-'+i+'" data-name="' + questions[game.currentQuestion].answers[i]+'">'+questions[game.currentQuestion].answers[i]+'</button>');
-        
-    }
+        $('#subwrapper').append('<button class= "answer-button" id ="button-'+i+'" data-name="' + questions[game.currentQuestion].answers[i]+'">'+questions[game.currentQuestion].answers[i]+'</button>'); 
+        }
     },
     // Setting up a nextQuestion method
     nextQuestion: function(){
-
+        game.counter = 30;
+        $('#counter').html(game.coutner);
+        game.currentQuestion++;
+        game.loadQuestion();
     },
     // Setting up a timeUp method
     timeUp: function(){
@@ -95,16 +97,31 @@ var game = {
 
     },
     // Setting up a clicked method
-    clicked: function(){
-
+    clicked: function(e){
+    //Make Sure That The Timer Isn't Running After Button is Clicked
+        clearInterval(timer);
+        // If The Button Clicked Is Correct, Let User Know Otherwise Let User Know It Was Incorrect
+        
+        if($(e.target).data("name") == questions[game.currentQuestion].correctAnswer){
+            game.answeredCorrectly();
+        } else {
+            game.answeredIncorrectly();
+        }
     }, 
     // Setting up a answeredCorrectly method
     answeredCorrectly: function(){
-
+        console.log('YOU GOT IT!');
+        // Make Sure That This Method Also Clears The Timer
+        // clearInterval(timer);
+        // And Counts If It Is Correct
+        // game.correct++;
+        // Write To Document If It Was Correct
+        // $('#subwrapper').html('<h2>YOU GOT IT RIGHT!</h2>');
     },
     // Setting up a answeredIncorrectly method
     answeredIncorrectly: function(){
-
+        console.log('WRONG!');
+        // Make Sure That This Method Also Clears The Timer
     },
     // Setting up a reset method
     reset: function(){
