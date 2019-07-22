@@ -112,11 +112,11 @@ var game = {
     answeredCorrectly: function(){
         console.log('YOU GOT IT!');
         // Make Sure That This Method Also Clears The Timer
-        // clearInterval(timer);
+        clearInterval(timer);
         // And Counts If It Is Correct
-        // game.correct++;
+        game.correct++;
         // Write To Document If It Was Correct
-        // $('#subwrapper').html('<h2>YOU GOT IT RIGHT!</h2>');
+        $('#subwrapper').html('<h2>YOU GOT IT RIGHT!</h2>');
     },
     // Setting up a answeredIncorrectly method
     answeredIncorrectly: function(){
