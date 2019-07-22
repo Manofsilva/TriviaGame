@@ -84,7 +84,7 @@ var game = {
     },
     // Setting up a nextQuestion method
     nextQuestion: function(){
-        game.counter = 30;
+        game.counter = 10;
         $('#counter').html(game.counter);
         // Set Up So That I Don't Loop Over Same Question
         game.currentQuestion++;
@@ -110,10 +110,13 @@ var game = {
     results: function(){
         clearInterval(timer);
         $('#subwrapper').html("<h2>ALL DONE!</h2>");
+        // For Correct
         $('#subwrapper').append("<h3>Correct: " + game.correct+"</h3>");
+        // For Incorrect
         $('#subwrapper').append("<h3>Incorrect: " + game.incorrect+"</h3>");
-        // Have Something For Answers Left Unanswered
-
+        // Have Something For Unanswered
+        $('#subwrapper').append("<h3>Unanswered: " + game.Unanswered+"</h3>");
+        $('#subwrapper').append("<button id ='reset'>Reset</button>");
     },
     // Setting up a clicked method
     clicked: function(e){
@@ -163,6 +166,13 @@ var game = {
     },
     // Setting up a reset method
     reset: function(){
+        // Have Something Set Up To Go Back To The Beginning
+        game.currentQuestion = 0;
+        game.counter = 0;
+        game.correct = 0;
+        game.incorrect = 0;
+        game.Unanswered = 0;
+        game.loadQuestion();
 
     }
 }
