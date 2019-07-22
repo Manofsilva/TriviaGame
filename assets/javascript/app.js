@@ -79,8 +79,10 @@ var game = {
     loadQuestion: function(){
     // Setting Up The Timer In This Function
     timer = setInterval(game.countDown, 1000);
+    // Create a Counter on The Document
+    $('#subwrapper').html("<h2 id='counter'>10</h2>");
     // Post the Question to The Page 
-    $('#subwrapper').html('<h2>' + questions[game.currentQuestion].question + '</h2>');
+    $('#subwrapper').append('<h2>' + questions[game.currentQuestion].question + '</h2>');
     // The Following Will Make Sure To Post The Answers To The Page Utilizing a For Loop
     for (let i = 0; i < questions[game.currentQuestion].answers.length; i++){
     // Making Sure To Add The Buttons Here
