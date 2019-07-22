@@ -11,6 +11,11 @@ $(document).on('click', '.answer-button', function(e){
     game.clicked(e);
 })
 
+// Onclick Event To Reset The Game
+$(document).on('click', '#reset', function(){
+    game.reset();
+})
+
 // Variables to setup Questions with an Array
 var questions = [{
     question: "Who is the biggest polluter in the world?",
