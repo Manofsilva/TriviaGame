@@ -1,7 +1,8 @@
 
-//Remove The Start Button When Starting The Game
+//Remove The Start Button When Starting The Game and Also Load The Questions
 $('#start').on('click',function(){
     $('#start').remove();
+    game.loadQuestion();
 })
 
 // Variables to setup Questions with an Array
@@ -68,6 +69,12 @@ var game = {
     timer = setInterval(game.countDown, 1000);
     // Post the Question to The Page 
     $('#subwrapper').html('<h2>' + questions[game.currentQuestion].question + '</h2>');
+    // The Following Will Make Sure To Post The Answers To The Page Utilizing a For Loop
+    for (let i = 0; i < questions[game.currentQuestion].answers.length; i++) {
+    // Making Sure To Add The Buttons Here
+        $('#subwrapper').append('<button class = "answer-button" id ="button-'+i+'" data-name="' + questions[game.currentQuestion].answers[i]+'">'+questions[game.currentQuestion].answers[i]+'</button>');
+        
+    }
     },
     // Setting up a nextQuestion method
     nextQuestion: function(){
