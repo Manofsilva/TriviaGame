@@ -21,7 +21,7 @@ var questions = [{
     question: "Who is the biggest polluter in the world?",
     answers: ["China", "Japan", "USA", "Russia"],
     correctAnswer: "China",
-    image: "assets/images/China-Pollution.jpg"
+    image: $("#picture").attr("src", "assets/image/China-Pollution.jpg")
 }, {
     question: "How many years does it take for a plastic water bottle to degrade?",
     answers: ["No less than 50 years", "No less than 1000 years", "No less than 450 years", "Nearly 10000 years"],
@@ -60,13 +60,13 @@ var game = {
     questions:questions,
     // keep track of what question we are currently on
     currentQuestion:0,
-    counter: 30,
+    counter: 10,
     correct:0,
     incorrect:0,
     Unanswered: 0,
     // Setting up a countdown method in charge of the timer
     countDown: function(){
-        game.countDown--;
+        game.counter--;
     // Decrease The Counter on the Screen
         $('#counter').html(game.counter);
     // Find out If the Counter Has Run Out or Not
@@ -144,6 +144,8 @@ var game = {
         clearInterval(timer);
         // And Counts If It Is Correct
         game.correct++;
+
+        
         // Write To Document If It Was Correct
         $('#subwrapper').html('<h2>YOU GOT IT RIGHT!</h2>');
         // Add Something That Takes Us To The Next Question or Determines If In The Last Section and Takes Us To The Results Page, Wait 5 Seconds
