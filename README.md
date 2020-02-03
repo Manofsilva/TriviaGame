@@ -12,6 +12,9 @@
 
 - This game does include a countdown timer.
 
+# Live page:
+https://manofsilva.github.io/TriviaGame/
+
 ### Demonstration
 
 ![gif](Trivia.gif)
